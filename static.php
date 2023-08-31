@@ -1,28 +1,49 @@
 <?php 
 
 
-class Student {
+class Siswa {
 
-    public static $grades = ['SD','SMP', 'SMA'];
+    public static $list_jenjang = ['SD','SMP', 'SMA'];
 
-    private static $totalStudent = 0;
+    private static $totalSiswa = 0;
 
     public static function count(){
 
-        return self::$totalStudent;
+        return self::$totalSiswa;
     } 
 
-    public static function addStudent($jumlah){
+    public static function mendaftar($jumlah_siswa){
 
-        return self::$totalStudent += $jumlah;
+        return self::$totalSiswa += $jumlah_siswa;
     }
 
    
 }
 
 
-echo Student::count() . "</br>";
 
-Student::addStudent(5) . "</br>";
+class SiswaMondok extends Siswa {
 
-echo Student::count() . "</br>";
+    public static $asrama = 'Abu Bakar';
+
+
+}
+
+SiswaMondok::$list_jenjang[] = "Alumni";
+
+$list_jenjang = Siswa::$list_jenjang;
+
+echo "Awal Tahun:" . SiswaMondok::count() . "</br>";
+
+SiswaMondok::mendaftar(2);
+
+
+
+foreach ($list_jenjang as $jenjang) {
+   echo $jenjang . '</br>';
+}
+
+
+echo "Akhir Tahun:" .  SiswaMondok::count();
+
+
